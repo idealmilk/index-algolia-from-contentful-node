@@ -1,3 +1,6 @@
+// https://www.youtube.com/watch?v=6TgRAKxtam0&ab_channel=MarceloLewin
+// https://github.com/matthew1809
+
 require("dotenv").config()
 ;(async () => {
   const algoliasearch = require("algoliasearch")

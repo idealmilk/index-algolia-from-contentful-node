@@ -22,27 +22,27 @@ require("dotenv").config()
 
   algoliaIndex.clearObjects()
 
-  try {
-    const { items } = await ctfClient.getEntries({
-      content_type: "review",
-      limit: 1000,
-    })
-    const reviews = items.map((review) => ({
-      slug: review.fields.slug,
-      albumTitle: review.fields.albumTitle,
-      artist: review.fields.artist,
-      author: review.fields.author,
-      albumCover: review.fields.albumCover,
-      publishedDate: review.fields.publishedDate,
-      objectID: review.sys.id,
-    }))
+  // try {
+  //   const { items } = await ctfClient.getEntries({
+  //     content_type: "review",
+  //     limit: 1000,
+  //   })
+  //   const reviews = items.map((review) => ({
+  //     slug: review.fields.slug,
+  //     albumTitle: review.fields.albumTitle,
+  //     artist: review.fields.artist,
+  //     author: review.fields.author,
+  //     albumCover: review.fields.albumCover,
+  //     publishedDate: review.fields.publishedDate,
+  //     objectID: review.sys.id,
+  //   }))
 
-    const indexedContent = await algoliaIndex.saveObjects(reviews, true)
+  //   const indexedContent = await algoliaIndex.saveObjects(reviews, true)
 
-    console.log("Indexed Content:", indexedContent)
-  } catch (err) {
-    console.error(err)
-  }
+  //   console.log("Indexed Content:", indexedContent)
+  // } catch (err) {
+  //   console.error(err)
+  // }
 
   // try {
   //   const { items } = await ctfClient.getEntries({
@@ -89,24 +89,24 @@ require("dotenv").config()
   //   console.error(err)
   // }
 
-  // try {
-  //   const { items } = await ctfClient.getEntries({
-  //     content_type: "artist",
-  //     limit: 1000,
-  //   })
-  //   const artists = items.map((artist) => ({
-  //     slug: artist.fields.slug,
-  //     englishName: artist.fields.englishName,
-  //     japaneseName: artist.fields.japaneseName,
-  //     objectID: artist.sys.id,
-  //   }))
+  try {
+    const { items } = await ctfClient.getEntries({
+      content_type: "artist",
+      limit: 1000,
+    })
+    const artists = items.map((artist) => ({
+      slug: artist.fields.slug,
+      englishName: artist.fields.englishName,
+      japaneseName: artist.fields.japaneseName,
+      objectID: artist.sys.id,
+    }))
 
-  //   const indexedContent = await algoliaIndex.saveObjects(artists, true)
+    const indexedContent = await algoliaIndex.saveObjects(artists, true)
 
-  //   console.log("Indexed Content:", indexedContent)
-  // } catch (err) {
-  //   console.error(err)
-  // }
+    console.log("Indexed Content:", indexedContent)
+  } catch (err) {
+    console.error(err)
+  }
 
 
 })()
